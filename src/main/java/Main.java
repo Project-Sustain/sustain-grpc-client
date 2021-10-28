@@ -14,8 +14,8 @@ public class Main {
 
     public static void main(String[] programArgs) {
 
-        ManagedChannel channel = ManagedChannelBuilder.forTarget("10.98.54.124:50051").usePlaintext().build();
         for(int i = 0; i < 1000; i++ ){
+            ManagedChannel channel = ManagedChannelBuilder.forTarget("10.98.54.124:50051").usePlaintext().build();
             SustainGrpc.SustainBlockingStub sustainBlockingStub = SustainGrpc.newBlockingStub(channel);
             DirectRequest directRequest = DirectRequest.newBuilder()
                     .setCollection("test_collection")
