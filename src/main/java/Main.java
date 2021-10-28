@@ -13,7 +13,7 @@ public class Main {
     private static final Logger log = LogManager.getLogger(Main.class);
 
     public static void main(String[] programArgs) {
-        ManagedChannel channel = ManagedChannelBuilder.forTarget("lattice-100").usePlaintext().build();
+        ManagedChannel channel = ManagedChannelBuilder.forTarget("lattice-100:50051").usePlaintext().build();
         SustainGrpc.SustainBlockingStub sustainBlockingStub = SustainGrpc.newBlockingStub(channel);
         DirectRequest directRequest = DirectRequest.newBuilder()
                 .setCollection("test_collection")
