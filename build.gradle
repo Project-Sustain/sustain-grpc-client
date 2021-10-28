@@ -1,4 +1,6 @@
 plugins {
+    // Provide convenience executables for trying out the examples.
+    id 'application'
     // Generate IntelliJ IDEA's .idea & .iml project files
     id 'idea'
     // Adds 'test' task
@@ -75,4 +77,16 @@ test {
     testLogging {
         showStandardStreams = true
     }
+}
+
+task client(type: CreateStartScripts) {
+    applicationName = 'client'
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = startScripts.classpath
+}
+
+// Distribute generated binaries from above tasks into the bin/ folder
+applicationDistribution.into('bin') {
+    from(client)
+    fileMode = 0755 // Make generated binaries executable
 }
