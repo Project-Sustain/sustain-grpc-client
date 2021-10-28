@@ -12,11 +12,9 @@ public class Main {
 
     private static final Logger log = LogManager.getLogger(Main.class);
 
-    private static SustainGrpc.SustainBlockingStub sustainBlockingStub;
-
     public static void main(String[] programArgs) {
         ManagedChannel channel = ManagedChannelBuilder.forTarget("lattice-100").usePlaintext().build();
-        sustainBlockingStub = SustainGrpc.newBlockingStub(channel);
+        SustainGrpc.SustainBlockingStub sustainBlockingStub = SustainGrpc.newBlockingStub(channel);
         DirectRequest directRequest = DirectRequest.newBuilder()
                 .setCollection("test_collection")
                 .setQuery("test_query")
